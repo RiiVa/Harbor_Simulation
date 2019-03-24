@@ -33,7 +33,7 @@ class Main:
     def run(self):
         
         currentT = 0
-        finalT = 5000000.0
+        finalT = 43800.0
         self.events_iter.add_events(events['ARRIVE'], self.math.ExpDistribution(8.0))
         i = 0
         while currentT < finalT:
@@ -162,6 +162,8 @@ class Main:
                     continue;
                 continue;
         print(i)
-        return self.dock_manager.mean_total()    
+        print(self.dock_manager.mean_total())
+        return self.dock_manager.mean_harbor()
+    
 a = Main(3)
 print(a.run(), "horas")
