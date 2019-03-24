@@ -5,7 +5,6 @@ Created on Sat Mar 23 12:29:29 2019
 @author: RiiVa
 """
 
-import numpy as np
 import collections as collect
 
 events = {}
@@ -26,15 +25,15 @@ class EventManager:
     
     
     def __init__(self):
-        self.heap = collect._heapq
+        self.heap = []
         
     def add_events(self , event , time , ship = None):
         e = Event(event, time, ship)
-        self.heap.heappush(e)        
+        collect._heapq.heappush(self.heap,(e.get_time(),e))        
         
     def next_event(self):
         if len(self.heap) > 0:
-            event = self.heap.heappop()
+            i,event = collect._heapq.heappop(self.heap)
             return event
         
         return Event(events['NOT_EVENT'], -1, None)
@@ -59,6 +58,5 @@ class Event:
     
     def ToCompare(self, event):
             return self.__time__ < event.get_time()
-    
-    
+
     
